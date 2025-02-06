@@ -78,7 +78,7 @@ function createTodoItem(todo, todoIndex, animate = false) {
         todoLI.style.opacity = 0;
         todoLI.style.transform = "translateY(20px)";
         setTimeout(() => {
-            todoLI.style.transition = "opacity 0.3s ease-out, transform 0.3s ease-out";
+            todoLI.style.transition = "opacity 0.3s ease-out, transform 0.3s ease-out, background-color 0.5s ease";
             todoLI.style.opacity = 1;
             todoLI.style.transform = "translateY(0)";
         }, 10);

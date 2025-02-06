@@ -1,11 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 :root {
+	--background: #fff;
+	--primary-color: #e8e9ed;
+	--secondary-color: #4A4D57;
+	--accent-color: #0071ff;
+	--text-color: #111528;
+}
+
+.darkmode {
 	--background: #101114;
 	--primary-color: #1C1D20;
 	--secondary-color: #4A4D57;
-	--accent-color: #00FFC4;
+	--accent-color: #0071ff;
 	--text-color: #F9F9F9;
+}
+
+#theme-switch {
+	height: 50px;
+	width: 50px;
+	padding: 0;
+	border-radius: 50%;
+	background-color: var(--primary-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	border: 1px solid var(--secondary-color); 
+	z-index: 999;
+	cursor: pointer;
+
+	transition: background-color .6s ease;
+}
+
+#theme-switch svg {
+	fill: var(--text-color);
+
+	transition: .6s ease;
+}
+
+#theme-switch svg:last-child {
+	display: none;
+}
+
+.darkmode #theme-switch svg:first-child {
+	display: none;
+}
+
+.darkmode #theme-switch svg:last-child {
+	display: block;
 }
 
 * {
@@ -31,6 +76,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+	transition: background-color .5s ease;
 }
 
 h1 {
@@ -86,11 +133,7 @@ form {
 	color: var(--background);
 	cursor: pointer;
 
-	transition: 200ms ease;
-}
-
-#add-button:hover {
-	background-color: #00d3a2;
+	transition: 200ms ease, color .5s ease;
 }
 
 @keyframes fadeOut {
@@ -115,13 +158,14 @@ form {
 	border-radius: 15px;
 	display: flex;
 	align-items: center;
-	transition: margin-top 0.3s ease-out, opacity 0.3s ease-out, transform 0.3s ease-out;
+	transition: background-color .5s ease;
 }
 
 .todo .todo-text {
 	padding: 15px;
 	padding-right: 0;
 	flex-grow: 1;
+	color: var(--text-color);
 	transition: 200ms ease;
 }
 
