@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+	--background: #fff;
+	--primary-color: #e8e9ed;
+	--secondary-color: #4A4D57;
+	--accent-color: #0071ff;
+	--text-color: #111528;
+}
+
+.darkmode {
+	--background: #101114;
+	--primary-color: #1C1D20;
+	--secondary-color: #4A4D57;
+	--accent-color: #0071ff;
+	--text-color: #F9F9F9;
+}
+
+#theme-switch {
+	height: 50px;
+	width: 50px;
+	padding: 0;
+	border-radius: 50%;
+	background-color: var(--primary-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	border: 1px solid var(--secondary-color); 
+	z-index: 999;
+	cursor: pointer;
+
+	transition: background-color .6s ease;
+}
+
+#theme-switch svg {
+	fill: var(--text-color);
+
+	transition: .6s ease;
+}
+
+#theme-switch svg:last-child {
+	display: none;
+}
+
+.darkmode #theme-switch svg:first-child {
+	display: none;
+}
+
+.darkmode #theme-switch svg:last-child {
+	display: block;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+html {
+	font-family: "Rubik", serif;
+	font-size: 16px;
+	color: var(--text-color);
+}
+
+body {
+	padding: 10px;
+	background-color: var(--background);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	transition: background-color .5s ease;
+}
+
+h1 {
+	margin-top: 100px;
+	margin-bottom: 20px;
+	font-size: 3rem;
+	font-weight: 800;
+	text-transform: uppercase;
+	text-align: center;
+	color: var(--accent-color);
+}
+
+.wrapper {
+	width: 700px;
+	max-width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+#todo-input {
+	box-sizing: border-box;
+	padding: 12px 20px;
+	width: 100%;
+	background: none;
+	border: 2px solid var(--secondary-color);
+	border-radius: 999px;
+	font: inherit;
+	color: var(--text-color);
+	caret-color: var(--accent-color);
+}
+
+#todo-input:focus {
+	outline: none;
+}
+
+form {
+	position: relative;
+}
+
+#add-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	background-color: var(--accent-color);
+	height: 100%;
+	padding: 0 30px;
+	border: none;
+	border-radius: 999px;
+	font: inherit;
+	font-weight: 600;
+	color: var(--background);
+	cursor: pointer;
+
+	transition: 200ms ease, color .5s ease;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+.todo.fade-out {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+.todo {
+	margin-bottom: 10px;
+	padding: 0 16px;
+	background-color: var(--primary-color);
+	border-radius: 15px;
+	display: flex;
+	align-items: center;
+	transition: background-color .5s ease;
+}
+
+.todo .todo-text {
+	padding: 15px;
+	padding-right: 0;
+	flex-grow: 1;
+	color: var(--text-color);
+	transition: 200ms ease;
+}
+
+.delete-button {
+	padding: 3px;
+	background: none;
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.delete-button svg {
+	transition: 200ms ease;
+}
+
+.delete-button:hover svg {
+	fill: #f03;
+}
+
+.custom-checkbox {
+	border: 2px solid var(--accent-color);
+	border-radius: 50%;
+	min-height: 20px;
+	min-width: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	transition: 200ms ease;
+	cursor: pointer;
+}
+
+input[type="checkbox"]:checked ~ .custom-checkbox {
+	background-color: var(--accent-color);
+}
+
+input[type="checkbox"] ~ .custom-checkbox svg {
+	transition: 200ms ease;
+}
+
+input[type="checkbox"]:checked ~ .custom-checkbox svg {
+	fill: var(--primary-color);
+}
+
+input[type="checkbox"]:checked ~ .todo-text {
+	text-decoration: line-through;
+	color: var(--secondary-color);
+}
+
+input[type="checkbox"] {
+	display: none;
+}
+
+@media(max-width: 500px) {
+	html {
+		font-size: 12px;
+	}
+
+	#add-button {
+		position: unset;
+		width: 100%;
+		margin-top: 10px;
+		padding: 15px;
+		height: auto;
+	}
+	
+	h1 {
+		margin-top: 50px;
+		font-size: 15vw;
+	}
+}
